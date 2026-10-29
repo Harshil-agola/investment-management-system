@@ -52,8 +52,23 @@ export interface RoiHistoryType extends Document {
 	investmentId: Types.ObjectId;
 	roiAmount: number;
 	date: Date;
-	payoutDate: string; // YYYY-MM-DD format for fast idempotency lookups
+	payoutDate: string;
 	status: RoiStatusType;
 	createdAt?: Date;
 	updatedAt?: Date;
+}
+
+
+export interface ReferralTreeNode {
+	_id: Types.ObjectId;
+	fullName: string;
+	email: string;
+	mobile: string;
+	referralCode: string;
+	walletBalance: number;
+	status: string;
+	createdAt: Date;
+	level: number;
+	directReferralCount: number;
+	children: ReferralTreeNode[];
 }

@@ -24,6 +24,7 @@ const userSchema = new Schema<UserType>(
 			required: true,
 			unique: true,
 			uppercase: true,
+			trim: true,
 		},
 		referredBy: { type: Schema.Types.ObjectId, ref: 'User', default: null },
 		walletBalance: { type: Number, default: 0, min: 0 },

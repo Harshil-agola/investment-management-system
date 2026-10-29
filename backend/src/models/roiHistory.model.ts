@@ -49,4 +49,3 @@ roiHistorySchema.index({ investmentId: 1, payoutDate: 1 }, { unique: true });
 roiHistorySchema.index({ userId: 1, date: -1 });
 
 export const RoiHistory = model<RoiHistoryType>('RoiHistory', roiHistorySchema);
-

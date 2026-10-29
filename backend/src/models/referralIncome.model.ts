@@ -47,4 +47,3 @@ export const ReferralIncome = model<ReferralIncomeType>(
 	'ReferralIncome',
 	referralIncomeSchema,
 );
-
