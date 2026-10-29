@@ -5,7 +5,7 @@ import { AppError } from '../utils/errorHandler.js';
 type RequestLocation = 'body' | 'query' | 'params';
 
 export const validate = (
-	schema: ZodType<any>,
+	schema: ZodType<unknown>,
 	source: RequestLocation = 'body',
 ) => {
 	return async (

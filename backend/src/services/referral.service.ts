@@ -1,6 +1,19 @@
 import mongoose from 'mongoose';
 import { User } from '../models/user.model.js';
-import type { ReferralTreeNode } from '../types/index.js';
+
+export interface ReferralTreeNode {
+	_id: mongoose.Types.ObjectId;
+	fullName: string;
+	email: string;
+	mobile: string;
+	referralCode: string;
+	walletBalance: number;
+	status: string;
+	createdAt: Date;
+	level: number;
+	directReferralCount: number;
+	children: ReferralTreeNode[];
+}
 
 export class ReferralService {
 	public static async buildReferralTree(
