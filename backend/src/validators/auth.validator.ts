@@ -16,9 +16,7 @@ export const registerSchema = z.object({
 		.min(1, 'Mobile number is required')
 		.trim()
 		.min(6, 'Mobile number must be at least 6 digits'),
-	password: z
-		.string()
-		.min(6, 'Password must be at least 6 characters'),
+	password: z.string().min(6, 'Password must be at least 6 characters'),
 	referralCode: z.string().trim().optional(),
 });
 
@@ -28,9 +26,7 @@ export const loginSchema = z.object({
 		.min(1, 'Email is required')
 		.trim()
 		.toLowerCase(),
-	password: z
-		.string()
-		.min(1, 'Password cannot be empty'),
+	password: z.string().min(1, 'Password cannot be empty'),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;

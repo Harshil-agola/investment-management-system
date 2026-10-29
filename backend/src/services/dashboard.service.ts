@@ -16,7 +16,11 @@ export class DashboardService {
 					totalInvestmentAmount: { $sum: '$amount' },
 					activeInvestmentAmount: {
 						$sum: {
-							$cond: [{ $eq: ['$status', InvestmentStatus.ACTIVE] }, '$amount', 0],
+							$cond: [
+								{ $eq: ['$status', InvestmentStatus.ACTIVE] },
+								'$amount',
+								0,
+							],
 						},
 					},
 					totalCount: { $sum: 1 },
@@ -47,4 +51,3 @@ export class DashboardService {
 		};
 	}
 }
-

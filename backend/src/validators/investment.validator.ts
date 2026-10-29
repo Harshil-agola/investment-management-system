@@ -1,13 +1,8 @@
 import { z } from 'zod';
 
 export const createInvestmentSchema = z.object({
-	amount: z
-		.number()
-		.positive('Investment amount must be greater than 0'),
-	planName: z
-		.string()
-		.trim()
-		.min(1, 'Plan name cannot be empty'),
+	amount: z.number().positive('Investment amount must be greater than 0'),
+	planName: z.string().trim().min(1, 'Plan name cannot be empty'),
 	durationDays: z
 		.number()
 		.int('Duration days must be an integer')
@@ -22,4 +17,6 @@ export const getInvestmentsQuerySchema = z.object({
 });
 
 export type CreateInvestmentInput = z.infer<typeof createInvestmentSchema>;
-export type GetInvestmentsQueryInput = z.infer<typeof getInvestmentsQuerySchema>;
+export type GetInvestmentsQueryInput = z.infer<
+	typeof getInvestmentsQuerySchema
+>;

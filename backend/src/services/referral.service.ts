@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import { User } from '../models/user.model.js';
 import type { ReferralTreeNode } from '../types/index.js';
 
-
 export class ReferralService {
 	public static async buildReferralTree(
 		parentId: mongoose.Types.ObjectId,
@@ -14,7 +13,9 @@ export class ReferralService {
 		}
 
 		const directChildren = await User.find({ referredBy: parentId })
-			.select('fullName email mobile referralCode walletBalance status createdAt')
+			.select(
+				'fullName email mobile referralCode walletBalance status createdAt',
+			)
 			.lean();
 
 		const tree: ReferralTreeNode[] = [];

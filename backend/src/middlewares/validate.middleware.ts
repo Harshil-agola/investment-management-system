@@ -8,7 +8,11 @@ export const validate = (
 	schema: ZodType<any>,
 	source: RequestLocation = 'body',
 ) => {
-	return async (req: Request, _res: Response, next: NextFunction): Promise<void> => {
+	return async (
+		req: Request,
+		_res: Response,
+		next: NextFunction,
+	): Promise<void> => {
 		try {
 			const parsed = await schema.parseAsync(req[source]);
 			req[source] = parsed;

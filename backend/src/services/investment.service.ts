@@ -17,7 +17,9 @@ export class InvestmentService {
 		let currentUserId = sourceUserId;
 
 		for (let level = 1; level <= REFERRAL_COMMISSION_RATES.length; level++) {
-			const currentUser = await User.findById(currentUserId).session(session || null);
+			const currentUser = await User.findById(currentUserId).session(
+				session || null,
+			);
 			if (!currentUser || !currentUser.referredBy) {
 				break;
 			}
@@ -30,7 +32,9 @@ export class InvestmentService {
 			}
 
 			const commissionRate = REFERRAL_COMMISSION_RATES[level - 1];
-			const commissionAmount = Number((investmentAmount * commissionRate).toFixed(2));
+			const commissionAmount = Number(
+				(investmentAmount * commissionRate).toFixed(2),
+			);
 
 			if (commissionAmount > 0 && parentUser.status === 'active') {
 				await ReferralIncome.create(

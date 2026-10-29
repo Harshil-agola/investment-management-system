@@ -73,15 +73,18 @@ export class AuthService {
 	public static async loginUser(input: LoginInput) {
 		const { email, password } = input;
 
-		const user = await User.findOne({ email: email.toLowerCase().trim() }).select(
-			'+password',
-		);
+		const user = await User.findOne({
+			email: email.toLowerCase().trim(),
+		}).select('+password');
 		if (!user) {
 			throw new AppError('Invalid email or password', 401);
 		}
 
 		if (user.status === 'blocked') {
-			throw new AppError('Your account has been blocked. Contact support.', 403);
+			throw new AppError(
+				'Your account has been blocked. Contact support.',
+				403,
+			);
 		}
 
 		const isMatch = await bcrypt.compare(password, user.password);
@@ -111,4 +114,3 @@ export class AuthService {
 		};
 	}
 }
-

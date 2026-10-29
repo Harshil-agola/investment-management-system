@@ -58,7 +58,6 @@ export interface RoiHistoryType extends Document {
 	updatedAt?: Date;
 }
 
-
 export interface ReferralTreeNode {
 	_id: Types.ObjectId;
 	fullName: string;

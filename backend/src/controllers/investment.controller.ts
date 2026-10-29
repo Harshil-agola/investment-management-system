@@ -27,7 +27,10 @@ export const getUserInvestments = asyncHandler(
 		const userId = req.user!._id as mongoose.Types.ObjectId;
 		const status = req.query.status as string | undefined;
 
-		const investments = await InvestmentService.getUserInvestments(userId, status);
+		const investments = await InvestmentService.getUserInvestments(
+			userId,
+			status,
+		);
 
 		res.status(200).json({
 			success: true,
